@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Market Insights | Annual Planning - Abu Dhabi DCT</title>
+    <title>Japan Market Dashboard | Annual Planning - Abu Dhabi DCT</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -207,7 +207,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 24px;
-            margin-bottom: 32px;
         }
         
         .metric-card {
@@ -266,12 +265,6 @@
             line-height: 1.2;
         }
         
-        .metric-change {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-            margin-bottom: 8px;
-        }
-        
         .change {
             display: inline-flex;
             align-items: center;
@@ -298,33 +291,40 @@
             color: var(--danger);
         }
         
-        .neutral {
-            background-color: var(--warning-light);
-            color: var(--warning);
-        }
-        
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-        
-        .insight-card {
-            background-color: var(--primary-light);
-            border-left: 4px solid var(--primary);
-            padding: 20px 24px;
-            border-radius: 0 var(--radius) var(--radius) 0;
+        .chart-container {
             position: relative;
+            height: 400px;
+            width: 100%;
+            margin-bottom: 28px;
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            border: 1px solid var(--gray-300);
             transition: var(--transition);
         }
         
-        .insight-card:hover {
-            transform: translateX(4px);
+        .chart-container:hover {
             box-shadow: var(--shadow-md);
         }
         
-        .insight-card::before {
+        .supporting-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+        }
+        
+        .insight-summary {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            position: relative;
+        }
+        
+        .insight-summary::before {
             content: '\f0eb';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
@@ -336,7 +336,7 @@
             opacity: 0.2;
         }
         
-        .insight-card h3 {
+        .insight-summary h3 {
             color: var(--primary-dark);
             margin-bottom: 12px;
             font-size: 1.25rem;
@@ -344,96 +344,18 @@
             align-items: center;
         }
         
-        .insight-card h3 i {
+        .insight-summary h3 i {
             margin-right: 10px;
         }
         
-        .insight-card p {
+        .insight-summary p {
             margin: 0;
             color: var(--gray-800);
             font-size: 1.05rem;
             line-height: 1.6;
         }
         
-        .strategic-recommendations {
-            background: linear-gradient(135deg, var(--secondary-light) 0%, var(--primary-light) 100%);
-            border: 1px solid var(--secondary);
-            border-radius: var(--radius-md);
-            padding: 32px;
-            margin-bottom: 32px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .strategic-recommendations::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9InJnYmEoNTIsIDE2OCwgODMsIDAuMSkiLz4KPC9zdmc+');
-            background-repeat: repeat;
-            opacity: 0.1;
-        }
-        
-        .strategic-recommendations .container-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .strategic-recommendations h2 {
-            color: var(--secondary);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 16px;
-        }
-        
-        .strategic-recommendations h2 i {
-            margin-right: 12px;
-            color: var(--secondary);
-        }
-        
-        .recommendations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-        
-        .recommendation-item {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius);
-            padding: 20px;
-            border: 1px solid rgba(52, 168, 83, 0.3);
-            transition: var(--transition);
-        }
-        
-        .recommendation-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--secondary);
-        }
-        
-        .recommendation-item h4 {
-            color: var(--secondary);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .recommendation-item h4 i {
-            margin-right: 10px;
-        }
-        
-        .recommendation-item p {
-            color: var(--gray-800);
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .back-to-dashboard {
+        .insights-link {
             display: inline-flex;
             align-items: center;
             background-color: var(--primary);
@@ -442,17 +364,17 @@
             text-decoration: none;
             border-radius: var(--radius);
             font-weight: 600;
-            margin-bottom: 32px;
+            margin-top: 16px;
             transition: var(--transition);
         }
         
-        .back-to-dashboard:hover {
+        .insights-link:hover {
             background-color: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
         }
         
-        .back-to-dashboard i {
+        .insights-link i {
             margin-right: 8px;
         }
         
@@ -487,12 +409,9 @@
                 grid-template-columns: 1fr;
             }
             
-            .insights-grid {
+            .supporting-metrics-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .recommendations-grid {
-                grid-template-columns: 1fr;
+                gap: 24px;
             }
             
             .print-btn {
@@ -512,8 +431,9 @@
                 margin-bottom: 24px;
             }
             
-            .strategic-recommendations {
-                padding: 24px;
+            .chart-container {
+                height: 350px;
+                padding: 16px;
             }
         }
         
@@ -524,6 +444,11 @@
             
             .metric-value {
                 font-size: 1.6rem;
+            }
+            
+            .chart-container {
+                height: 300px;
+                padding: 12px;
             }
             
             header h1 {
@@ -552,9 +477,7 @@
         <div class="container">
             <a href="https://studiorns.github.io/Annual-Planning/">Annual Planning Repository</a>
             <span>></span>
-            <a href="../index.html">Japan Market Dashboard</a>
-            <span>></span>
-            <span>Market Insights</span>
+            <span>Japan Market Dashboard</span>
         </div>
     </div>
     
@@ -570,99 +493,68 @@
                     <span class="soner-tagline">Visual Intelligence</span>
                 </div>
             </div>
-            <h1>Japan Market Insights</h1>
+            <h1>Japan Market Dashboard</h1>
             <h2 style="font-size: 1.3rem; margin-top: 5px; font-weight: 500; border-bottom: none; padding-bottom: 0; color: white;">Department of Culture and Tourism - Abu Dhabi</h2>
-            <p class="subtitle">Strategic Analysis & Market Intelligence | 75-Day Booking Window Optimization</p>
+            <p class="subtitle">Annual Planning Analysis | Hotel Guests, Flight Searches & Outbound Travel</p>
         </div>
     </header>
     
     <div class="container">
-        <a href="../index.html" class="back-to-dashboard">
-            <i class="fas fa-arrow-left"></i> Back to Japan Dashboard
-        </a>
-        
         <div class="dashboard-section">
-            <h2><i class="fas fa-chart-line"></i> Key Performance Metrics</h2>
+            <h2><i class="fas fa-calendar-alt"></i> Seasonal Analysis & Campaign Planning</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <div class="metric-name"><i class="fas fa-hotel"></i> Hotel Guests (2024)</div>
-                    <div class="metric-value">17,001</div>
-                    <div class="metric-change">vs 2023: 8,595 <span class="change positive"><i class="fas fa-arrow-up"></i>+97.8%</span></div>
+                    <div class="metric-name"><i class="fas fa-plane-departure"></i> Peak Outbound Travel</div>
+                    <div class="metric-value">August 2024 <span style="font-size: 0.8rem; color: var(--gray-600);">1,973,000 travelers</span></div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-name"><i class="fas fa-calendar-alt"></i> Peak Month Performance</div>
-                    <div class="metric-value">December</div>
-                    <div class="metric-change">2,014 guests <span class="change positive"><i class="fas fa-star"></i>Peak Excellence</span></div>
+                    <div class="metric-name"><i class="fas fa-search"></i> Peak Flight Searches</div>
+                    <div class="metric-value">April 2025 <span style="font-size: 0.8rem; color: var(--gray-600);">7,667 searches</span></div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-name"><i class="fas fa-trending-up"></i> Outstanding Growth</div>
-                    <div class="metric-value">April 2024</div>
-                    <div class="metric-change">+168.54% YoY <span class="change positive"><i class="fas fa-rocket"></i>Exceptional</span></div>
+                    <div class="metric-name"><i class="fas fa-chart-bar"></i> Peak Hotel Guests</div>
+                    <div class="metric-value">December <span style="font-size: 0.8rem; color: var(--gray-600);">2,014 guests</span></div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-name"><i class="fas fa-clock"></i> Booking Window</div>
-                    <div class="metric-value">75 days</div>
-                    <div class="metric-change">Strategic Planning <span class="change neutral"><i class="fas fa-calendar-check"></i>Methodical</span></div>
+                    <div class="metric-name"><i class="fas fa-calendar-alt"></i> Booking Window</div>
+                    <div class="metric-value">75 days <span style="font-size: 0.8rem; color: var(--gray-600);">Strategic advance planning</span></div>
                 </div>
             </div>
         </div>
         
         <div class="dashboard-section">
-            <h2><i class="fas fa-lightbulb"></i> Market Intelligence & Insights</h2>
-            <div class="insights-grid">
-                <div class="insight-card">
-                    <h3><i class="fas fa-trophy"></i> Exceptional Growth Story</h3>
-                    <p>Japan demonstrates outstanding hotel guest performance with +97.8% YoY growth, establishing itself as a premier Asia-Pacific market. The remarkable growth trajectory with consistent positive performance across most months positions Japan as a flagship destination for Abu Dhabi tourism expansion.</p>
-                </div>
-                <div class="insight-card">
-                    <h3><i class="fas fa-calendar-alt"></i> Strategic 75-Day Planning</h3>
-                    <p>Japan's unique 75-day booking window reflects methodical Japanese travel planning culture, enabling advanced campaign strategies, early booking incentives, and strategic positioning. This extended planning horizon provides optimal time for targeted marketing and conversion optimization.</p>
-                </div>
-                <div class="insight-card">
-                    <h3><i class="fas fa-sun"></i> Spring-Summer Excellence</h3>
-                    <p>Exceptional growth periods including April (+168.54%), May (+162.10%), and June (+120.45%) demonstrate strong spring-summer appeal. This seasonal strength aligns perfectly with Abu Dhabi's premium positioning during Japan's peak travel planning seasons.</p>
-                </div>
-                <div class="insight-card">
-                    <h3><i class="fas fa-snowflake"></i> Winter Peak Leadership</h3>
-                    <p>December peak performance (2,014 guests) indicates strong year-end travel patterns and winter escape preferences. This positioning supports Abu Dhabi as Japan's premier winter destination, capitalizing on seasonal travel motivations and holiday travel patterns.</p>
+            <h2><i class="fas fa-chart-area"></i> Market Performance Overview</h2>
+            
+            <div class="insight-summary">
+                <h3><i class="fas fa-lightbulb"></i> Key Insights</h3>
+                <p>Japan represents an exceptional growth market showing outstanding hotel guest performance (+97.8% YoY) with strategic 75-day advance booking behavior typical of methodical Japanese travel planning. The market demonstrates remarkable conversion efficiency with peak performance in December (2,014 guests) and exceptional spring-summer growth including April (+168.54%), May (+162.10%), and June (+120.45%). Japan's unique 75-day booking window enables strategic campaign positioning and early booking optimization within Asia-Pacific's premium travel landscape.</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3><i class="fas fa-globe-americas"></i> Outbound Travel from Japan</h3>
+                <div class="chart-container">
+                    <canvas id="outbound-chart"></canvas>
                 </div>
             </div>
-        </div>
-        
-        <div class="strategic-recommendations">
-            <div class="container-content">
-                <h2><i class="fas fa-bullseye"></i> Strategic Recommendations</h2>
-                <div class="recommendations-grid">
-                    <div class="recommendation-item">
-                        <h4><i class="fas fa-calendar-plus"></i> 75-Day Campaign Strategy</h4>
-                        <p>Leverage Japan's 75-day booking window with advanced campaign planning, early booking incentives, and strategic content marketing. Deploy campaigns 90+ days in advance to capture the methodical Japanese travel planning process effectively.</p>
+            
+            <div class="supporting-metrics-grid">
+                <div>
+                    <h3><i class="fas fa-plane"></i> Flight Searches Trend</h3>
+                    <div class="chart-container">
+                        <canvas id="flights-chart"></canvas>
                     </div>
-                    <div class="recommendation-item">
-                        <h4><i class="fas fa-rocket"></i> Growth Momentum Optimization</h4>
-                        <p>Capitalize on exceptional +97.8% growth momentum with increased investment, enhanced targeting, and premium positioning. Scale successful strategies that delivered outstanding conversion rates and sustained growth performance.</p>
-                    </div>
-                    <div class="recommendation-item">
-                        <h4><i class="fas fa-leaf"></i> Spring-Summer Focus</h4>
-                        <p>Intensify marketing during Japan's spring-summer planning periods (January-March) to capture exceptional growth windows. Target Japan's Golden Week and summer holiday planning with specialized Abu Dhabi positioning campaigns.</p>
-                    </div>
-                    <div class="recommendation-item">
-                        <h4><i class="fas fa-gift"></i> Winter Premium Positioning</h4>
-                        <p>Develop premium winter packages targeting December peak performance. Position Abu Dhabi as Japan's premier winter escape destination, emphasizing luxury experiences, cultural offerings, and year-end celebration opportunities.</p>
-                    </div>
-                    <div class="recommendation-item">
-                        <h4><i class="fas fa-users"></i> Cultural Alignment Strategy</h4>
-                        <p>Develop Japan-specific content emphasizing cultural experiences, precision service standards, and attention to detail that resonate with Japanese travel preferences. Highlight Abu Dhabi's cultural offerings and premium hospitality standards.</p>
-                    </div>
-                    <div class="recommendation-item">
-                        <h4><i class="fas fa-chart-line"></i> Performance Sustaining</h4>
-                        <p>Implement strategies to sustain exceptional growth rates through continuous optimization, A/B testing, and performance monitoring. Focus on conversion rate optimization and customer lifetime value enhancement.</p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-hotel"></i> Hotel Guests Trend</h3>
+                    <div class="chart-container">
+                        <canvas id="hotel-chart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <button class="print-btn" title="Print Insights"><i class="fas fa-print"></i></button>
+    <button class="print-btn" title="Print Dashboard"><i class="fas fa-print"></i></button>
     
     <footer style="background-color: var(--gray-100); padding: 20px 0; text-align: center; margin-top: 40px; border-top: 1px solid var(--gray-300);">
         <div class="container">
@@ -671,6 +563,229 @@
     </footer>
     
     <script>
+        // Japan Market Data from travel-data.csv
+        const japanData = {
+            months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            hotelGuests2023: [722, 798, 764, 426, 599, 440, 866, 624, 741, 1012, 1127, 1475],
+            hotelGuests2024: [1142, 1545, 1102, 1144, 1570, 970, 979, 1372, 1410, 1831, 1458, 2014],
+            hotelGuests2025: [null, null, null, null, null, null, null, null, null, null, null, null],
+            flightSearches2023: [1771, 1878, 1293, 1460, 1250, 1100, null, null, null, null, null, null],
+            flightSearches2024: [3656, 4211, 3691, 4436, 4240, 4859, 5536, 7013, 7467, 7252, 5904, 5705],
+            flightSearches2025: [5831, 4980, 4973, 7667, 6610, 5726, 7366, null, null, null, null, null],
+            outboundTravel2023: [532000, 760000, 1043000, 834000, 1026000, 1024000, 1188000, 1602000, 1452000, 1348000, 1505000, 1338000],
+            outboundTravel2024: [1117000, 1359000, 1848000, 1292000, 1418000, 1370000, 1369000, 1973000, 1772000, 1709000, 1471000, 1510000],
+            outboundTravel2025: [1205000, 1441000, 1455000, 1394000, 1380000, 1325000, null, null, null, null, null, null]
+        };
+
+        // Chart.js default configuration for dark theme
+        Chart.defaults.color = '#e0e0e0';
+        Chart.defaults.borderColor = '#3d3d3d';
+        Chart.defaults.backgroundColor = '#2d2d2d';
+
+        // Hotel Guests Chart
+        const hotelCtx = document.getElementById('hotel-chart').getContext('2d');
+        new Chart(hotelCtx, {
+            type: 'line',
+            data: {
+                labels: japanData.months,
+                datasets: [{
+                    label: '2023',
+                    data: japanData.hotelGuests2023,
+                    borderColor: '#8ab4f8',
+                    backgroundColor: 'rgba(138, 180, 248, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: '2024',
+                    data: japanData.hotelGuests2024,
+                    borderColor: '#4285f4',
+                    backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                    borderWidth: 3,
+                    fill: false,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Monthly Hotel Guests from Japan',
+                        color: '#e0e0e0'
+                    },
+                    legend: {
+                        labels: {
+                            color: '#e0e0e0'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#a0a0a0'
+                        },
+                        grid: {
+                            color: '#3d3d3d'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#a0a0a0'
+                        },
+                        grid: {
+                            color: '#3d3d3d'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Flight Searches Chart
+        const flightsCtx = document.getElementById('flights-chart').getContext('2d');
+        new Chart(flightsCtx, {
+            type: 'line',
+            data: {
+                labels: japanData.months,
+                datasets: [{
+                    label: '2023',
+                    data: japanData.flightSearches2023,
+                    borderColor: '#8ab4f8',
+                    backgroundColor: 'rgba(138, 180, 248, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: '2024',
+                    data: japanData.flightSearches2024,
+                    borderColor: '#4285f4',
+                    backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                    borderWidth: 3,
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: '2025 (Partial)',
+                    data: japanData.flightSearches2025,
+                    borderColor: '#34a853',
+                    backgroundColor: 'rgba(52, 168, 83, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4,
+                    borderDash: [5, 5]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Monthly Flight Searches from Japan',
+                        color: '#e0e0e0'
+                    },
+                    legend: {
+                        labels: {
+                            color: '#e0e0e0'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#a0a0a0'
+                        },
+                        grid: {
+                            color: '#3d3d3d'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#a0a0a0'
+                        },
+                        grid: {
+                            color: '#3d3d3d'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Outbound Travel Chart
+        const outboundCtx = document.getElementById('outbound-chart').getContext('2d');
+        new Chart(outboundCtx, {
+            type: 'line',
+            data: {
+                labels: japanData.months,
+                datasets: [{
+                    label: '2023',
+                    data: japanData.outboundTravel2023,
+                    borderColor: '#8ab4f8',
+                    backgroundColor: 'rgba(138, 180, 248, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: '2024',
+                    data: japanData.outboundTravel2024,
+                    borderColor: '#4285f4',
+                    backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                    borderWidth: 3,
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: '2025 (Partial)',
+                    data: japanData.outboundTravel2025,
+                    borderColor: '#34a853',
+                    backgroundColor: 'rgba(52, 168, 83, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4,
+                    borderDash: [5, 5]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Monthly Outbound Travel from Japan',
+                        color: '#e0e0e0'
+                    },
+                    legend: {
+                        labels: {
+                            color: '#e0e0e0'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#a0a0a0',
+                            callback: function(value, index, values) {
+                                return value.toLocaleString();
+                            }
+                        },
+                        grid: {
+                            color: '#3d3d3d'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#a0a0a0'
+                        },
+                        grid: {
+                            color: '#3d3d3d'
+                        }
+                    }
+                }
+            }
+        });
+
         // Print functionality
         document.querySelector('.print-btn').addEventListener('click', () => {
             window.print();
